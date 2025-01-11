@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libRendering.a CMakeFiles/Rendering.dir/VertexBuffer.cpp.o CMakeFiles/Rendering.dir/IndexBuffer.cpp.o CMakeFiles/Rendering.dir/VertexArray.cpp.o CMakeFiles/Rendering.dir/OrthographicCamera.cpp.o CMakeFiles/Rendering.dir/PerspectiveCamera.cpp.o CMakeFiles/Rendering.dir/Camera.cpp.o
+/usr/bin/ranlib ../../lib/libRendering.a
