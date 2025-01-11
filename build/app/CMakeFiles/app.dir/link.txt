@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/app.dir/main.cpp.o CMakeFiles/app.dir/Application.cpp.o -o ../bin/app  ../lib/libGLFWApplication.a ../lib/libglfw3.a ../lib/libglad.a ../lib/libRendering.a ../lib/libShaders.a ../lib/libTexture.a ../lib/libglfw3.a /usr/lib/x86_64-linux-gnu/librt.a -lm -ldl /usr/lib/x86_64-linux-gnu/libX11.so ../lib/libglad.a 
