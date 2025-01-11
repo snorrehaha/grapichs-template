@@ -7,14 +7,25 @@ Shader::Shader(const std::string &vertexSrc, const std::string &fragmentSrc)
     FragmentShader = CompileShader(GL_FRAGMENT_SHADER, fragmentSrc);
     
     ShaderProgram = glCreateProgram();
-	glAttachShader(ShaderProgram, VertexShader);
-	glAttachShader(ShaderProgram, FragmentShader);
-	glLinkProgram(ShaderProgram);
+    glAttachShader(ShaderProgram, VertexShader);
+    glAttachShader(ShaderProgram, FragmentShader);
+    glLinkProgram(ShaderProgram);
 
-	// Shader objects can be deleted once they 
-	// have been linked in a shader program
-	
+    // Check linking status
+    GLint success;
+    glGetProgramiv(ShaderProgram, GL_LINK_STATUS, &success);
+    if (!success)
+    {
+        char infoLog[512];
+        glGetProgramInfoLog(ShaderProgram, 512, nullptr, infoLog);
+        std::cerr << "Shader Program Linking Failed: " << infoLog << std::endl;
+    }
+
+    // Shader objects can be deleted once they have been linked into the program
+    glDeleteShader(VertexShader);
+    glDeleteShader(FragmentShader);
 }
+
 
 Shader::~Shader()
 {
@@ -100,10 +111,20 @@ void Shader::UploadUniformMat4(const std::string &name, const glm::mat4 &matrix)
 
 GLuint Shader::CompileShader(GLenum shaderType, const std::string &shaderSrc)
 {
-    // Compile the vertex shader
-    auto shader = glCreateShader(shaderType);
+    GLuint shader = glCreateShader(shaderType);
     const GLchar *ss = shaderSrc.c_str();
     glShaderSource(shader, 1, &ss, nullptr);
     glCompileShader(shader);
+
+    // Check compilation status
+    GLint success;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+    if (!success)
+    {
+        char infoLog[512];
+        glGetShaderInfoLog(shader, 512, nullptr, infoLog);
+        std::cerr << "Shader Compilation Failed: " << infoLog << std::endl;
+    }
+
     return shader;
 }
