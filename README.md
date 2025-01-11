@@ -1,4 +1,4 @@
-# PROG20002 Graphics Programming
+PROG20002 Graphics Programming
 Template repo
 
 CMake 3.15+
