@@ -46,7 +46,7 @@ void Application::RenderLoop()
         // Clear the screen with a default color (e.g., black)
         RenderCommands::Clear();
         
-
+        // Testing 
         
         glfwSwapBuffers(window);
         // Poll and handle input events
